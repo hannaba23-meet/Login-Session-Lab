@@ -6,10 +6,12 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 @app.route('/', methods=['GET', 'POST']) # What methods are needed?
 def home():
-	if request.method == "POST":
+	if request.method == "GET":
+		return render_template("home.html")
+	else:
 		username = request.form['username']
 		password = request.form['password']
-	return render_template('home.html', un = username, pas = password)
+	return render_template('thanks.html', un = username, pas = password)
 
 
 @app.route('/error')
